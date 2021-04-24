@@ -1,0 +1,75 @@
+package main.services;
+
+import java.util.ArrayList;
+
+
+public class CalculatorService {
+
+	String result="";
+	ArrayList<Integer> whiteSpaceIndex=null;
+	public char[] chars= {};
+	
+	public CalculatorService(String text){
+		this.setWhiteSpacesAndChars(text);
+	}
+	
+	
+
+	public void setWhiteSpacesAndChars(String text)
+	{
+		System.out.println(chars.length+"teeeeeest");
+		char[] charArr=text.toCharArray();
+		whiteSpaceIndex=new ArrayList<Integer>();
+		for(int i=0;i<charArr.length;i++)
+		{
+			if(charArr[i]==' ')
+			{
+				whiteSpaceIndex.add(i);
+			}else {
+				chars[0]=charArr[i];
+			}
+		}
+		System.out.print(whiteSpaceIndex);
+		System.out.print(chars);
+	}
+	public String getResult(char[] chars,int start)
+	{
+//		System.out.print(chars);
+//		System.out.print(start);
+//		System.out.print("\n");
+		if(start==chars.length)
+		{
+
+			result=result+formattResult(chars)+",";
+
+		
+		}else {
+			for(int i=start;i<chars.length;i++)
+			{
+
+					    char temp=chars[start];
+						chars[start]=chars[i];
+						chars[i]=temp;
+						getResult(chars,start+1);
+						temp=chars[start];
+						chars[start]=chars[i];
+						chars[i]=temp;
+		
+			}
+		}
+		return result;
+	}
+	
+	public String formattResult(char[] res) {
+		
+		
+		String x=String.valueOf(res);
+		return x;
+	}
+	
+//	public void setResult()
+//	{
+//		result="";
+//		whiteSpaceIndex=null;
+//	}
+}

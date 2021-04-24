@@ -1,0 +1,30 @@
+package main.services;
+
+public class CalculatorService {
+
+
+	public CalculatorService(){
+		
+	}
+	
+	public void getResult(String[] chars,int start)
+	{
+		System.out.print(chars);
+		if(start==chars.length)
+		{
+			System.out.print(chars+",");
+		
+		}else {
+			for(int i=start;i<chars.length;i++)
+			{
+				String temp=chars[start];
+				chars[start]=chars[i];
+				chars[i]=temp;
+				getResult(chars,start+1);
+				temp=chars[start];
+				chars[start]=chars[i];
+				chars[i]=temp;
+			}
+		}
+	}
+}

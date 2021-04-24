@@ -1,0 +1,39 @@
+package com.combinationscalculator;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication 
+
+public class Combinationscalculator {
+
+	public static void main (String[] args)
+	{
+		SpringApplication.run(Combinationscalculator.class, args);
+	
+	}
+
+	
+	
+	
+	private static void getResult(char[] chars,int start)
+	{
+		if(start==chars.length)
+		{
+			System.out.print(chars);
+			System.out.print("\n");
+		}else {
+			for(int i=start;i<chars.length;i++)
+			{
+				char temp=chars[start];
+				chars[start]=chars[i];
+				chars[i]=temp;
+				getResult(chars,start+1);
+				temp=chars[start];
+				chars[start]=chars[i];
+				chars[i]=temp;
+			}
+		}
+	}
+	
+	
+}

@@ -1,0 +1,49 @@
+package main.services;
+
+public class CalculatorService {
+
+	String result="";
+	public CalculatorService(){
+		
+	}
+	
+	public String getResult(char[] chars,int start)
+	{
+//		System.out.print(chars);
+//		System.out.print(start);
+//		System.out.print("\n");
+		if(start==chars.length)
+		{
+			
+			String x=String.valueOf(chars);
+			result=result+x+",";
+			System.out.print(x);
+			System.out.print(",");
+		
+		}else {
+			for(int i=start;i<chars.length;i++)
+			{
+				if(chars[start]!=' ')
+				{
+					    char temp=chars[start];
+					    if(chars[i]==' ') {
+					    	System.out.print(i);
+					    }
+						chars[start]=chars[i];
+						chars[i]=temp;
+						getResult(chars,start+1);
+						temp=chars[start];
+						chars[start]=chars[i];
+						chars[i]=temp;
+			 }
+			
+			}
+		}
+		return result;
+	}
+	
+	public void setResult()
+	{
+		result="";
+	}
+}

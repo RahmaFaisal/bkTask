@@ -1,0 +1,40 @@
+package com.combinationscalculator;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication 
+
+public class Combinationscalculator {
+
+	public static void main (String[] args)
+	{
+		char[] test= {'x','y','z'};
+		getResult(test,0);
+	
+	}
+
+	
+	
+	
+	private static void getResult(char[] chars,int start)
+	{
+		if(start==chars.length)
+		{
+			System.out.print(chars);
+			System.out.print("");
+		}else {
+			for(int i=start;i<chars.length;i++)
+			{
+				char temp=chars[start];
+				chars[start]=temp;
+				chars[i]=temp;
+				getResult(chars,start+1);
+				temp=chars[start];
+				chars[start]=temp;
+				chars[i]=temp;
+			}
+		}
+	}
+	
+	
+}
